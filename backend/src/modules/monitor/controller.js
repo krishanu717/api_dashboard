@@ -38,3 +38,49 @@ export async function getMonitors(
     data: monitors,
   });
 }
+
+export async function updateMonitor(
+  req,
+  res
+) {
+  try {
+    const monitor =
+      await monitorService.update(
+        req.params.id,
+        req.user.userId,
+        req.body
+      );
+
+    res.json({
+      success: true,
+      data: monitor,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+}
+
+export async function deleteMonitor(
+  req,
+  res
+) {
+  try {
+    await monitorService.delete(
+      req.params.id,
+      req.user.userId
+    );
+
+    res.json({
+      success: true,
+      message: "Monitor deleted",
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+}

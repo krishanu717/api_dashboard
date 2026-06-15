@@ -13,4 +13,40 @@ export const monitorService = {
       userId
     );
   },
+  async update(id, userId, data) {
+  const monitor =
+    await monitorRepository.findById(id);
+
+  if (!monitor) {
+    throw new Error("Monitor not found");
+  }
+
+  if (
+    monitor.userId.toString() !== userId
+  ) {
+    throw new Error("Unauthorized");
+  }
+
+  return monitorRepository.update(
+    id,
+    data
+  );
+},
+
+async delete(id, userId) {
+  const monitor =
+    await monitorRepository.findById(id);
+
+  if (!monitor) {
+    throw new Error("Monitor not found");
+  }
+
+  if (
+    monitor.userId.toString() !== userId
+  ) {
+    throw new Error("Unauthorized");
+  }
+
+  return monitorRepository.delete(id);
+},
 };
