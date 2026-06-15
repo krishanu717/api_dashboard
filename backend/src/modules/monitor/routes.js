@@ -4,6 +4,7 @@ import {
   getMonitors,
   updateMonitor,
   deleteMonitor,
+  getMonitorResults,
 } from "./controller.js";
 import {
   authMiddleware,
@@ -38,6 +39,11 @@ router.delete(
   "/:id",
   authMiddleware,
   deleteMonitor
+);
+router.get(
+  "/:id/results",
+  authMiddleware,
+  getMonitorResults
 );
 
 export default router;

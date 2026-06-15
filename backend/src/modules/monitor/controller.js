@@ -1,5 +1,7 @@
 import { monitorService }
 from "./service.js";
+import { checkResultService }
+from "../check-result/service.js";
 
 export async function createMonitor(
   req,
@@ -83,4 +85,28 @@ export async function deleteMonitor(
       message: error.message,
     });
   }
+  
+
 }
+
+export async function getMonitorResults(
+  req,
+  res
+) {
+  try {
+    const results =
+      await checkResultService.getByMonitor(
+        req.params.id
+      );
+
+    res.json({
+      success: true,
+      data: results,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+}   

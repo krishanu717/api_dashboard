@@ -25,4 +25,7 @@ update(id, data) {
 delete(id) {
   return Monitor.findByIdAndDelete(id);
 },
+findAll() {
+  return Monitor.find();
+},
 };

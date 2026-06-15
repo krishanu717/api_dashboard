@@ -49,4 +49,7 @@ async delete(id, userId) {
 
   return monitorRepository.delete(id);
 },
+getAllMonitors() {
+  return monitorRepository.findAll();
+},
 };
