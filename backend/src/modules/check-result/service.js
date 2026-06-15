@@ -13,4 +13,9 @@ export const checkResultService = {
       monitorId
     );
   },
+  getAnalytics(monitorId) {
+  return checkResultRepository.getAnalytics(
+    monitorId
+  );
+}
 };

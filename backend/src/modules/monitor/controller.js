@@ -109,4 +109,27 @@ export async function getMonitorResults(
       message: error.message,
     });
   }
+
 }   
+
+export async function getMonitorAnalytics(
+  req,
+  res
+) {
+  try {
+    const analytics =
+      await checkResultService.getAnalytics(
+        req.params.id
+      );
+
+    res.json({
+      success: true,
+      data: analytics,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+}
