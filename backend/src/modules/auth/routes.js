@@ -1,3 +1,5 @@
+import { Router } from "express";
+
 import {
   register,
   login,
@@ -8,7 +10,6 @@ import {
   authMiddleware,
 } from "../../middlewares/auth.middleware.js";
 
-import { Router } from "express";
 const router = Router();
 
 router.post(
@@ -27,10 +28,4 @@ router.get(
   me
 );
 
-router.get("/ping", (req, res) => {
-  res.json({
-    success: true,
-    route: "auth",
-  });
-});
 export default router;

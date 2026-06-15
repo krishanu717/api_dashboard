@@ -4,8 +4,7 @@ export async function register(req, res) {
   try {
     const user = await authService.register(req.body);
 
-    const { password, ...safeUser } =
-      user.toObject();
+    const { password, ...safeUser } = user.toObject();
 
     res.status(201).json({
       success: true,
@@ -48,8 +47,7 @@ export async function me(req, res) {
       });
     }
 
-    const { password, ...safeUser } =
-      user.toObject();
+    const { password, ...safeUser } = user.toObject();
 
     res.json({
       success: true,
@@ -61,5 +59,4 @@ export async function me(req, res) {
       message: error.message,
     });
   }
-
 }
